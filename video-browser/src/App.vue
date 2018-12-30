@@ -1,18 +1,26 @@
 <template>
     <div>
         <SearchBar @termChange="onTermChange"></SearchBar>
+        <VideoList/>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
+import VideoList from './components/VideoList'
 const API_KEY = process.env.VUE_APP_API_KEY;
 
 export default {
     name: 'App',
+    data() {
+        return {
+            videos: []
+        }
+    },
     components: {
-        SearchBar
+        SearchBar,
+        VideoList
     },
     methods: {
         onTermChange(searchTerm) {
@@ -25,7 +33,7 @@ export default {
                 }
             })
             .then(res => {
-                console.log(res)
+                this.videos = res.data.items
             })
             .catch(err => console.log(err))
         }
