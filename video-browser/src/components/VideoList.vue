@@ -4,6 +4,7 @@
             v-for="video in videos"
             :video="video"
             :key="video.etag"
+            @videoClick="onVideoClick"
         />
     </ul>
 </template>
@@ -19,6 +20,11 @@ export default {
     props: {
         videos: Array,
     },
+    methods: {
+        onVideoClick(video) {
+            this.$emit('videoClick', video)
+        },
+    }
 }
 </script>
 

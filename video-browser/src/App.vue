@@ -3,7 +3,7 @@
         <!-- <SearchBar v-on:termChange="onTermChange"></SearchBar> -->
         <SearchBar @termChange="onTermChange"></SearchBar>
         <!-- <VideoList v-bind:videos="videos"/> -->
-        <VideoList :videos="videos"/>
+        <VideoList :videos="videos" @videoClick="onVideoClick"/>
     </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
     name: 'App',
     data() {
         return {
-            videos: []
+            videos: [],
+            selectVideo: {}
         }
     },
     components: {
@@ -38,6 +39,10 @@ export default {
                 this.videos = res.data.items
             })
             .catch(err => console.log(err))
+        },
+        onVideoClick(video) {
+            console.log(video)
+            this.selectVideo = video
         }
     }
 }
