@@ -1,7 +1,9 @@
 <template>
     <div>
+        <!-- <SearchBar v-on:termChange="onTermChange"></SearchBar> -->
         <SearchBar @termChange="onTermChange"></SearchBar>
-        <VideoList/>
+        <!-- <VideoList v-bind:videos="videos"/> -->
+        <VideoList :videos="videos"/>
     </div>
 </template>
 
