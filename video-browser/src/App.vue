@@ -1,10 +1,11 @@
 <template>
     <div>
-        <SearchBar @termChang="onTermChange"></SearchBar>
+        <SearchBar @termChange="onTermChange"></SearchBar>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
 import SearchBar from './components/SearchBar';
 const API_KEY = process.env.VUE_APP_API_KEY;
 
@@ -13,12 +14,20 @@ export default {
     components: {
         SearchBar
     },
-    data: {
-        searchTerm: '',
-    },
     methods: {
         onTermChange(searchTerm) {
-            this.searchTerm = searchTerm;
+            axios.get('https://www.googleapis.com/youtube/v3/search', {
+                params: {
+                    key: API_KEY,
+                    type: 'video',
+                    part: 'snippet',
+                    q: searchTerm,
+                }
+            })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err))
         }
     }
 }
