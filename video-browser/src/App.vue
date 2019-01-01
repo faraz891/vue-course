@@ -2,6 +2,7 @@
     <div class="container">
         <!-- <SearchBar v-on:termChange="onTermChange"></SearchBar> -->
         <SearchBar @termChange="onTermChange"></SearchBar>
+        <VideoDetail :video="selectVideo"/>
         <!-- <VideoList v-bind:videos="videos"/> -->
         <VideoList :videos="videos" @videoClick="onVideoClick"/>
     </div>
@@ -11,6 +12,8 @@
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList'
+import VideoDetail from './components/VideoDetail'
+
 const API_KEY = process.env.VUE_APP_API_KEY;
 
 export default {
@@ -18,12 +21,13 @@ export default {
     data() {
         return {
             videos: [],
-            selectVideo: {}
+            selectVideo: null
         }
     },
     components: {
         SearchBar,
-        VideoList
+        VideoList,
+        VideoDetail
     },
     methods: {
         onTermChange(searchTerm) {
@@ -38,10 +42,9 @@ export default {
             .then(res => {
                 this.videos = res.data.items
             })
-            .catch(err => console.log(err))
+            // .catch(err => console.log(err))
         },
         onVideoClick(video) {
-            console.log(video)
             this.selectVideo = video
         }
     }
