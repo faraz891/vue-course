@@ -3,6 +3,7 @@
         <a href="/" class="active item">
             ImageStorage
         </a>
+        {{ isLoggedIn }}
         <div class="right menu">
             <a 
                 href="#"
@@ -14,11 +15,14 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 
 export default {
     name: 'Header',
+    computed: {
+        ...mapGetters(['isLoggedIn'])
+    },
     methods: {
         ...mapActions(['login']),
     }
