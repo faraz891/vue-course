@@ -3,12 +3,25 @@
         <a href="/" class="active item">
             ImageStorage
         </a>
+        <div class="right menu">
+            <a 
+                href="#"
+                class="ui itme"
+                @click="login"
+            >Login</a>
+        </div>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
+
 export default {
-    name: 'Header'
+    name: 'Header',
+    methods: {
+        ...mapActions(['login']),
+    }
 }
 </script>
 

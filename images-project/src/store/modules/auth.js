@@ -29,3 +29,11 @@ export default {
     actions,
     mutations
 }
+
+// http://localhost:8080/oauth/callback#
+// access_token=cca1781719baa0e5c6e7681393ef4c519186159c
+// &expires_in=315360000
+// &token_type=bearer
+// &refresh_token=af42401f95fd58c8cf6adc90eb4e2700546cfca8
+// &account_username=
+// &account_id=4900035
