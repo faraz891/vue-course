@@ -4,7 +4,12 @@
             ImageStorage
         </a>
         {{ isLoggedIn }}
-        <div class="right menu">
+        <div v-if="isLoggedIn" class="right menu">
+            Galleries
+            Button Upload
+            Button Logout
+        </div>
+        <div v-else class="right menu">
             <a 
                 href="#"
                 class="ui itme"
