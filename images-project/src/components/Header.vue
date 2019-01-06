@@ -3,16 +3,15 @@
         <a href="/" class="active item">
             ImageStorage
         </a>
-        {{ isLoggedIn }}
         <div v-if="isLoggedIn" class="right menu">
-            Galleries
-            Button Upload
-            Button Logout
+            <a class="item">Galleries</a>
+            <a class="item">Upload</a>
+            <a class="item" @click="logout">Logout</a>
         </div>
         <div v-else class="right menu">
             <a 
                 href="#"
-                class="ui itme"
+                class="ui item"
                 @click="login"
             >Login</a>
         </div>
@@ -29,7 +28,7 @@ export default {
         ...mapGetters(['isLoggedIn'])
     },
     methods: {
-        ...mapActions(['login']),
+        ...mapActions(['login', 'logout']),
     }
 }
 </script>
